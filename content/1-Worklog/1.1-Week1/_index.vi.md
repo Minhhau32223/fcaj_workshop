@@ -1,59 +1,47 @@
 ---
 title: "Worklog Tuần 1"
-date: 2024-01-01
+date: 2026-06-22
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 1:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tìm hiểu yêu cầu và mục tiêu của đề tài **Automatic Image Optimization System on AWS**.
+* Làm quen với kiến trúc Serverless trên AWS.
+* Tìm hiểu các dịch vụ AWS dự kiến sử dụng trong hệ thống.
+* Thiết kế kiến trúc tổng quan của hệ thống.
+* Thiết lập môi trường phát triển và repository cho project.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Phân tích yêu cầu đề tài <br> - Xác định input/output của hệ thống <br> - Xác định flow upload → processing → output | 22/06/2026 | 22/06/2026 | AWS Documentation |
+| 3 | - Tìm hiểu AWS Serverless Architecture <br>&emsp; + S3 <br>&emsp; + Lambda <br>&emsp; + DynamoDB <br>&emsp; + CloudWatch <br>&emsp; + SNS <br>&emsp; + IAM | 23/06/2026 | 23/06/2026 | AWS Documentation |
+| 4 | - Tìm hiểu Amazon S3 <br>&emsp; + Bucket <br>&emsp; + Object <br>&emsp; + Bucket Policy <br>&emsp; + Event notification <br> - Tìm hiểu cách lưu trữ ảnh input/output | 24/06/2026 | 24/06/2026 | AWS Documentation |
+| 5 | - Tìm hiểu AWS Lambda <br>&emsp; + Function <br>&emsp; + Runtime <br>&emsp; + Handler <br>&emsp; + Execution Role <br> - Tìm hiểu flow S3 → Lambda | 25/06/2026 | 25/06/2026 | AWS Documentation |
+| 6 | - Thiết kế architecture diagram <br> - Tạo GitHub repository <br> - Khởi tạo AWS CDK project <br> - Setup môi trường development | 26/06/2026 | 26/06/2026 | AWS CDK Documentation |
 
 ### Kết quả đạt được tuần 1:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hiểu được mục tiêu và phạm vi của đề tài **Automatic Image Optimization System on AWS**.
+* Nắm được kiến trúc Serverless cơ bản và vai trò của các AWS services trong hệ thống.
+* Hiểu được vai trò của:
+  * Amazon S3
+  * AWS Lambda
+  * Amazon DynamoDB
+  * Amazon CloudWatch
+  * Amazon SNS
+  * AWS IAM
+* Hiểu được flow xử lý ảnh cơ bản:
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+```text
+S3 Input
+   ↓
+Lambda
+   ↓
+S3 Output
+   ↓
+DynamoDB

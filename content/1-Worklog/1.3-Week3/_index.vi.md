@@ -1,59 +1,43 @@
 ---
 title: "Worklog Tuần 3"
-date: 2024-01-01
-weight: 1
+date: 2026-07-06
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 3:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hoàn thiện Image Optimization Pipeline.
+* Chuẩn hóa quá trình resize và compression.
+* Tích hợp Amazon DynamoDB để lưu metadata.
+* Xử lý trạng thái SUCCESS/FAILED.
+* Hoàn thiện việc triển khai S3, Lambda và DynamoDB bằng CDK.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tối ưu thuật toán resize <br> - Xác định kích thước output phù hợp cho web <br> - Chuẩn hóa image format | 06/07/2026 | 06/07/2026 | Python / Pillow Documentation |
+| 3 | - Chuẩn hóa output file naming <br> - Xây dựng input/output folder structure <br> - Xử lý các trường hợp image không hợp lệ | 07/07/2026 | 07/07/2026 | AWS S3 Documentation |
+| 4 | - Tìm hiểu Amazon DynamoDB <br> - Thiết kế metadata schema <br>&emsp; + imageId <br>&emsp; + fileName <br>&emsp; + inputSize <br>&emsp; + outputSize <br>&emsp; + status <br>&emsp; + timestamp | 08/07/2026 | 08/07/2026 | AWS DynamoDB Documentation |
+| 5 | - Kết nối Lambda → DynamoDB <br> - Lưu trạng thái SUCCESS/FAILED <br> - Lưu kích thước trước và sau khi tối ưu | 09/07/2026 | 09/07/2026 | AWS DynamoDB Documentation |
+| 6 | - Deploy S3 + Lambda + DynamoDB bằng CDK <br> - Kiểm tra resource sau deploy <br> - Fix các lỗi deployment | 10/07/2026 | 10/07/2026 | AWS CDK Documentation |
 
 ### Kết quả đạt được tuần 3:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hoàn thiện Image Processing Lambda.
+* Chuẩn hóa resize và compression.
+* Hoàn thiện output image naming.
+* Tạo DynamoDB table lưu metadata.
+* Lambda có khả năng lưu:
+  * File name
+  * Input size
+  * Output size
+  * Processing status
+  * Timestamp
+* Xử lý được hai trạng thái:
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+```text
+SUCCESS
+FAILED
