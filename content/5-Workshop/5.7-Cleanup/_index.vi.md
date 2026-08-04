@@ -63,11 +63,11 @@ Thực hiện theo các bước sau:
 
 1. Truy cập **Amazon S3 Console**.
 
-![s3](images/5-Workshop/5.7-Cleanup/s3_console.jpg)
+![s3](images\5-Workshop\5.7-Cleanup\s3_console.jpg)
 
 2. Chọn Bucket cần xóa.
 
-![s3](images/5-Workshop/5.7-Cleanup/s3_bucket_select.jpg)
+![s3](images\5-Workshop\5.7-Cleanup\s3_bucket_select.jpg)
 
 3. Chọn toàn bộ các Object trong Bucket.
 
