@@ -1,6 +1,6 @@
 ---
 title: "Internship Report"
-date: 2024-01-01
+date: 2026-08-04
 weight: 1
 chapter: false
 ---
@@ -19,7 +19,7 @@ chapter: false
 
 &emsp; **Major:** Software Engineer
 
-&emsp; **Class:** AWS082025
+&emsp; **Class:** FCAJ - SGU - SS3
 
 &emsp; **Internship Company:** Amazon Web Services Viet Nam Company Limited
 

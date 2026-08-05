@@ -1,59 +1,101 @@
 ---
 title: "Worklog Tuần 4"
-date: 2024-01-01
-weight: 1
+date: 2026-07-13
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Mở rộng kiến trúc hệ thống với Amazon API Gateway.
+* Xây dựng Upload API cho hệ thống.
+* Tìm hiểu cơ chế Presigned URL của Amazon S3.
+* Triển khai API Gateway bằng AWS CDK.
+* Hỗ trợ tích hợp Frontend với Backend thông qua API.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tìm hiểu Amazon API Gateway <br> - Nghiên cứu REST API và HTTP Method <br> - Tìm hiểu mô hình API Gateway → Lambda Integration | 13/07/2026 | 13/07/2026 | https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html |
+| 3 | - Xây dựng Upload Lambda <br> - Thiết kế API `POST /images/upload` <br> - Tìm hiểu cơ chế Presigned URL của Amazon S3 | 14/07/2026 | 14/07/2026 | https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html |
+| 4 | - Triển khai API Gateway bằng AWS CDK <br> - Kết nối API Gateway với Upload Lambda <br> - Kiểm thử API bằng Postman | 15/07/2026 | 15/07/2026 | https://docs.aws.amazon.com/cdk/api/v2/ |
+| 5 | - Hỗ trợ tích hợp Frontend với Upload API <br> - Kiểm thử Upload thông qua Presigned URL <br> - Kiểm tra CORS và IAM Permission | 16/07/2026 | 16/07/2026 | https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html |
+| 6 | - Kiểm thử toàn bộ Upload Flow <br> - Khắc phục lỗi API và cấu hình hạ tầng <br> - Cập nhật tài liệu kiến trúc hệ thống | 17/07/2026 | 17/07/2026 | https://docs.aws.amazon.com/whitepapers/latest/serverless-multi-tier-architectures-api-gateway-lambda/serverless-multi-tier-architectures-api-gateway-lambda.html |
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hoàn thành nghiên cứu và triển khai **Amazon API Gateway** làm cổng giao tiếp giữa ứng dụng Frontend và các dịch vụ AWS trong kiến trúc Serverless.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Thiết kế và triển khai thành công Upload API:
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+```text
+POST /images/upload
+```
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+API có nhiệm vụ tiếp nhận yêu cầu từ phía Frontend, gọi Upload Lambda để tạo **Presigned URL**, sau đó trả kết quả về cho người dùng.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Xây dựng **Upload Lambda** với các chức năng:
+  * Tiếp nhận yêu cầu từ API Gateway.
+  * Kiểm tra thông tin file tải lên.
+  * Sinh Presigned URL để upload trực tiếp lên Amazon S3.
+  * Trả về URL cùng các thông tin cần thiết cho phía Frontend.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+* Triển khai thành công **Amazon API Gateway** bằng **AWS CDK**, giúp toàn bộ hạ tầng được quản lý theo mô hình **Infrastructure as Code (IaC)** và dễ dàng tái triển khai khi cần.
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+* Hoàn thiện kết nối giữa các thành phần trong hệ thống:
 
+```text
+Frontend
+      │
+      ▼
+Amazon API Gateway
+      │
+      ▼
+Upload Lambda
+      │
+      ▼
+Generate Presigned URL
+      │
+      ▼
+Amazon S3 (Input Bucket)
+```
 
+* Kiểm thử API bằng **Postman** và xác nhận:
+  * API hoạt động ổn định.
+  * Trả về Presigned URL hợp lệ.
+  * Có thể tải ảnh trực tiếp lên Amazon S3 thông qua URL được cấp.
+  * Upload thành công với nhiều định dạng ảnh phổ biến như JPG, PNG và WEBP.
+
+* Hỗ trợ tích hợp Upload API với Frontend, giúp người dùng có thể tải ảnh lên hệ thống thông qua API Gateway thay vì truy cập trực tiếp Amazon S3.
+
+* Kiểm tra và điều chỉnh **IAM Role**, **Bucket Policy** và **CORS Configuration**, đảm bảo Upload Lambda chỉ được cấp các quyền cần thiết và Frontend có thể truy cập API an toàn.
+
+* Cập nhật tài liệu triển khai và sơ đồ kiến trúc sau khi bổ sung API Gateway, phản ánh đầy đủ luồng xử lý dữ liệu mới của hệ thống.
+
+* Kiểm thử thành công luồng Upload hoàn chỉnh:
+
+```text
+Người dùng
+      │
+      ▼
+Frontend
+      │
+      ▼
+Amazon API Gateway
+      │
+      ▼
+Upload Lambda
+      │
+      ▼
+Generate Presigned URL
+      │
+      ▼
+Amazon S3 (Input Bucket)
+      │
+      ▼
+Image Processing Pipeline
+```
+
+* Hoàn thành giai đoạn xây dựng **Upload Service**, tạo nền tảng để tuần tiếp theo mở rộng hệ thống theo kiến trúc **Event-driven** với **Amazon EventBridge**, đồng thời tăng khả năng mở rộng và giảm sự phụ thuộc giữa các thành phần trong hệ thống.
