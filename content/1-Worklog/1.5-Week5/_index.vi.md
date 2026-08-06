@@ -1,59 +1,80 @@
 ---
 title: "Worklog Tuần 5"
-date: 2024-01-01
-weight: 1
+date: 2026-07-20
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 5:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tìm hiểu kiến trúc Event-driven trên AWS.
+* Triển khai Amazon EventBridge vào hệ thống.
+* Kết nối sự kiện từ Amazon S3 đến AWS Lambda.
+* Tích hợp EventBridge với Image Processing Pipeline.
+* Hoàn thiện kiến trúc xử lý ảnh theo mô hình Event-driven.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tìm hiểu kiến trúc Event-driven <br> - Tìm hiểu Amazon EventBridge <br> - Nghiên cứu Event Bus, Rule và Target | 20/07/2026 | 20/07/2026 | https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html |
+| 3 | - Xây dựng EventBridge Rule <br> - Thiết lập Event Pattern cho sự kiện S3 Object Created <br> - Phân tích cấu trúc Event Payload | 21/07/2026 | 21/07/2026 | https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-event-patterns.html |
+| 4 | - Kết nối Amazon S3 với EventBridge <br> - Kết nối EventBridge với Image Processing Lambda <br> - Kiểm thử Event Payload | 22/07/2026 | 22/07/2026 | https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventBridge.html |
+| 5 | - Điều chỉnh Image Processing Lambda để xử lý EventBridge Event <br> - Kiểm thử với nhiều loại ảnh <br> - Kiểm tra trường hợp xử lý trùng lặp | 23/07/2026 | 23/07/2026 | https://docs.aws.amazon.com/lambda/latest/dg/with-eventbridge.html |
+| 6 | - Triển khai EventBridge bằng AWS CDK <br> - Kiểm thử toàn bộ pipeline <br> - Khắc phục lỗi phát sinh trong quá trình xử lý sự kiện | 24/07/2026 | 24/07/2026 | https://docs.aws.amazon.com/cdk/api/v2/ |
 
 ### Kết quả đạt được tuần 5:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hiểu được nguyên lý hoạt động của **Event-driven Architecture** và cách áp dụng mô hình này vào hệ thống xử lý ảnh trên AWS.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Nghiên cứu và triển khai thành công **Amazon EventBridge** làm trung gian điều phối sự kiện giữa các dịch vụ AWS, giúp giảm sự phụ thuộc trực tiếp giữa Amazon S3 và AWS Lambda.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Xây dựng và cấu hình thành công **EventBridge Rule** để lắng nghe sự kiện **Object Created** từ Amazon S3.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Hoàn thiện kết nối giữa **Amazon S3**, **Amazon EventBridge** và **AWS Lambda**, đảm bảo Lambda được kích hoạt tự động khi có ảnh mới được tải lên Input Bucket.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+* Điều chỉnh Image Processing Lambda để tiếp nhận và xử lý dữ liệu theo định dạng EventBridge Event, đồng thời kiểm tra tính chính xác của Event Payload.
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+* Triển khai hạ tầng EventBridge bằng **AWS CDK**, giúp việc quản lý và triển khai hạ tầng được đồng bộ với các thành phần đã xây dựng trước đó.
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+* Kiểm thử thành công toàn bộ luồng xử lý ảnh theo mô hình Event-driven:
 
+```text
+Người dùng
+      │
+      ▼
+Frontend
+      │
+      ▼
+API Gateway
+      │
+      ▼
+Upload Lambda
+      │
+      ▼
+Amazon S3 (Input Bucket)
+      │
+      ▼
+Amazon EventBridge
+      │
+      ▼
+Image Processing Lambda
+      │
+      ├── Resize Image
+      ├── Compress Image
+      ├── Upload Output Image
+      └── Lưu Metadata
+      │
+      ▼
+Amazon S3 (Output Bucket)
+      │
+      ▼
+Amazon DynamoDB
+```
 
+* Kiểm tra thành công khả năng xử lý nhiều ảnh liên tiếp, xác nhận EventBridge truyền sự kiện chính xác và Lambda thực hiện xử lý ổn định.
+
+* Cập nhật sơ đồ kiến trúc hệ thống và tài liệu triển khai để phản ánh mô hình Event-driven sau khi bổ sung Amazon EventBridge.
+
+* Hoàn thành giai đoạn mở rộng kiến trúc Serverless, tạo tiền đề cho việc triển khai **CloudWatch Monitoring**, **Amazon SNS Alerting**, **CI/CD Pipeline** và các chức năng giám sát hệ thống trong tuần tiếp theo.
