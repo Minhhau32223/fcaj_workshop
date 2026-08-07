@@ -51,3 +51,4 @@ Image Processing Lambda
 S3 Output
     ↓
 DynamoDB
+```
