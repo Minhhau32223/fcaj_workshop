@@ -1,0 +1,9 @@
+{{- $url := .Destination -}}
+{{- if not (hasPrefix $url "http") -}}
+  {{- $parts := split $url "images/" -}}
+  {{- if gt (len $parts) 1 -}}
+    {{- $url = printf "/images/%s" (index $parts 1) -}}
+  {{- end -}}
+  {{- $url = $url | relURL -}}
+{{- end -}}
+<img src="{{ $url }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
