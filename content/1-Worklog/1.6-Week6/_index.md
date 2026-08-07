@@ -1,57 +1,71 @@
 ---
 title: "Week 6 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-07-27
+weight: 6
 chapter: false
 pre: " <b> 1.6. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 6 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Complete the monitoring system for the entire pipeline.
+* Set up Amazon CloudWatch Logs, Metrics, and Dashboard.
+* Configure CloudWatch Alarm and Amazon SNS to send alerts when errors occur.
+* Review access permissions according to the Least Privilege principle.
+* Learn and apply data encryption using AWS KMS.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks to be implemented this week:
 
+| Day | Task | Start Date | Completion Date | Documentation Source |
+| --- | --- | --- | --- | --- |
+| Monday | - Learn about Amazon CloudWatch Logs <br> - Check AWS Lambda logs <br> - Standardize log content <br> - Identify information to record | 27/07/2026 | 27/07/2026 | https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/WhatIsCloudWatchLogs.html |
+| Tuesday | - Learn about Amazon CloudWatch Metrics <br> - Monitor Lambda Invocations, Errors, Duration <br> - Build CloudWatch Dashboard | 28/07/2026 | 28/07/2026 | https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html |
+| Wednesday | - Create CloudWatch Alarm <br> - Set alert conditions for Lambda errors <br> - Learn about Amazon SNS | 29/07/2026 | 29/07/2026 | https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/AlarmThatSendsEmail.html |
+| Thursday | - Connect CloudWatch Alarm with Amazon SNS <br> - Configure Email Notification <br> - Test error scenarios | 30/07/2026 | 30/07/2026 | https://docs.aws.amazon.com/sns/latest/dg/welcome.html |
+| Friday | - Review IAM Policy and Bucket Policy <br> - Check service access permissions <br> - Learn about AWS KMS <br> - Check data encryption for Amazon S3 | 31/07/2026 | 31/07/2026 | https://docs.aws.amazon.com/kms/latest/developerguide/overview.html |
 
 ### Week 6 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Completed the **Monitoring** system for the Image Optimization Pipeline using **Amazon CloudWatch**, helping to track the real-time operational status of system components.
 
-* Successfully created and configured an AWS Free Tier account.
+* Standardized the **CloudWatch Logs** content of AWS Lambda, making it easier to track the image processing and supporting error analysis and troubleshooting during incidents.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Set up monitoring for critical AWS Lambda metrics via **CloudWatch Metrics**, including:
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+  * Invocations
+  * Errors
+  * Duration
+  * Throttles
+  * Success Rate
 
-* Used AWS CLI to perform basic operations such as:
+* Built a **CloudWatch Dashboard** to visualize the system's operational status, making it easy to monitor performance and image processing health.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* Set up **CloudWatch Alarm** to detect instances where Lambda processing fails or generates errors exceeding the allowed threshold.
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Successfully connected **CloudWatch Alarm** with **Amazon SNS**, enabling the system to automatically send email notifications when errors occur during image processing.
+
+* Successfully tested the alert mechanism by simulating error handling scenarios and confirming that emails were sent to the administrator exactly as configured.
+
+* Reviewed and optimized the **IAM Role**, **IAM Policy**, and **S3 Bucket Policy**, ensuring that services are only granted necessary permissions according to the **Least Privilege** principle.
+
+* Researched and applied **AWS Key Management Service (AWS KMS)** to understand data encryption mechanisms on AWS, and tested encryption capabilities for Amazon S3 to enhance data security.
+
+* Fully tested the system's monitoring and alerting flow:
+
+```text
+AWS Lambda
+      │
+      ▼
+Amazon CloudWatch Logs
+      │
+      ▼
+CloudWatch Metrics
+      │
+      ▼
+CloudWatch Alarm
+      │
+      ▼
+Amazon SNS
+      │
+      ▼
+Email Notification

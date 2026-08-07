@@ -1,57 +1,53 @@
 ---
 title: "Week 7 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-08-03
+weight: 7
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 7 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Complete the CI/CD pipeline for the project.
+* Automate AWS infrastructure deployment using AWS CDK.
+* Test the entire system following the End-to-End process.
+* Test successful and failed processing scenarios.
+* Fix remaining errors before finalizing the project.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks to be implemented this week:
 
+| Day | Task | Start Date | Completion Date | Documentation Source |
+| --- | --- | --- | --- | --- |
+| Monday | - Learn about GitHub Actions <br> - Design CI/CD pipeline <br> - Build AWS CDK deployment Workflow | 03/08/2026 | 03/08/2026 | https://docs.github.com/en/actions |
+| Tuesday | - Integrate GitHub Actions with AWS CDK <br> - Test CDK Deploy from GitHub Repository <br> - Check deployment status | 04/08/2026 | 04/08/2026 | https://docs.aws.amazon.com/cdk/v2/guide/home.html |
+| Wednesday | - Test JPG, PNG, WEBP images <br> - Test with various image sizes <br> - Evaluate Resize and Compression results | 05/08/2026 | 05/08/2026 | https://pillow.readthedocs.io/en/stable/ |
+| Thursday | - Test invalid images <br> - Test Lambda Failure <br> - Check FAILED status on DynamoDB <br> - Test CloudWatch Alarm and Amazon SNS | 06/08/2026 | 06/08/2026 | https://docs.aws.amazon.com/ |
+| Friday | - Test the entire End-to-End Pipeline <br> - Troubleshoot arising errors <br> - Review IAM Permissions <br> - Final check of the CI/CD Pipeline | 07/08/2026 | 07/08/2026 | https://docs.github.com/en/actions |
 
 ### Week 7 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Completed the **CI/CD** pipeline for the project using **GitHub Actions**, helping to automate the AWS infrastructure deployment process after every source code update.
 
-* Successfully created and configured an AWS Free Tier account.
+* Successfully built the **GitHub Actions Workflow** with the following steps:
+  * Check out source code from the GitHub Repository.
+  * Set up the execution environment.
+  * Install necessary libraries.
+  * Execute **AWS CDK Deploy**.
+  * Automatically update AWS infrastructure.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Successfully tested the automated deployment process:
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+```text
+Git Push
+      │
+      ▼
+GitHub Actions
+      │
+      ▼
+Build & Validate
+      │
+      ▼
+AWS CDK Deploy
+      │
+      ▼
+AWS Infrastructure

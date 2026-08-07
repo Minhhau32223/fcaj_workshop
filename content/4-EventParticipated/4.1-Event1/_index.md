@@ -52,5 +52,7 @@ I learned that building a good Cloud solution is not only about understanding in
 Most importantly, the event showed me the importance of teamwork, effective communication, and making decisions under pressure. These are essential skills that I will continue to develop throughout my studies and future career.
 
 ## Photos from the Event
-
-> Add photos of the team and activities during the Cloud Architect Event here.
+Photo 1: The whole team competing
+![h1](/images/4-Event/event1-1.jpg)
+Photo 2: Scoreboard display
+![h1](/images/4-Event/event1-2.jpg)

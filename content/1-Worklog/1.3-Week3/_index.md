@@ -1,57 +1,101 @@
 ---
 title: "Week 3 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-07-06
+weight: 3
 chapter: false
 pre: " <b> 1.3. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 3 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Complete the Image Optimization Pipeline.
+* Standardize the resize and compression process.
+* Integrate Amazon DynamoDB to store metadata.
+* Handle SUCCESS/FAILED statuses.
+* Complete the deployment of S3, Lambda, and DynamoDB using CDK.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks to be implemented this week:
 
+| Day | Task | Start Date | Completion Date | Documentation Source |
+| --- | --- | --- | --- | --- |
+| Monday | - Optimize resize algorithm <br> - Determine suitable output size for web <br> - Standardize image format | 06/07/2026 | 06/07/2026 | https://pillow.readthedocs.io/en/stable/ |
+| Tuesday | - Standardize output file naming conventions <br> - Build storage structure on Amazon S3 <br> - Handle invalid image cases | 07/07/2026 | 07/07/2026 | https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html |
+| Wednesday | - Learn about Amazon DynamoDB <br> - Design metadata table <br>&emsp; + imageId <br>&emsp; + fileName <br>&emsp; + inputSize <br>&emsp; + outputSize <br>&emsp; + status <br>&emsp; + createdAt | 08/07/2026 | 08/07/2026 | https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html |
+| Thursday | - Connect AWS Lambda with Amazon DynamoDB <br> - Save SUCCESS/FAILED status <br> - Save image information after processing | 09/07/2026 | 09/07/2026 | https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html |
+| Friday | - Deploy Amazon S3, AWS Lambda, and Amazon DynamoDB using AWS CDK <br> - Check resources after deployment <br> - Troubleshoot errors arising during deployment | 10/07/2026 | 10/07/2026 | https://docs.aws.amazon.com/cdk/api/v2/ |
 
 ### Week 3 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Completed the **Image Processing Pipeline**, allowing the system to automatically process images after they are uploaded to Amazon S3.
 
-* Successfully created and configured an AWS Free Tier account.
+* Standardized the image processing with the following functions:
+  * Resize images to a suitable size for web applications.
+  * Compress images to reduce file size while maintaining display quality.
+  * Standardize the format and naming conventions of output images.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Perfected the data storage structure on Amazon S3, helping to manage original and processed images clearly, facilitating system expansion.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Successfully designed and deployed the **ImageMetadata** table on Amazon DynamoDB to store information for each image after processing.
 
-* Used AWS CLI to perform basic operations such as:
+The metadata table includes the following attributes:
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+| Attribute | Description |
+|-----------|-------------|
+| imageId | Image identifier |
+| fileName | Image file name |
+| inputSize | Original image size |
+| outputSize | Optimized image size |
+| status | Processing status |
+| createdAt | Processing completion time |
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Completed the integration between **AWS Lambda** and **Amazon DynamoDB**, allowing Lambda to automatically record metadata after each image processing.
+
+* The system has the capability to track the processing status of each image:
+
+```text
+SUCCESS
+FAILED
+```
+
+Where:
+
+- **SUCCESS:** The image was processed successfully, saved to the Output Bucket, and its metadata was updated in DynamoDB.
+- **FAILED:** An error occurred during processing; the status is recorded for monitoring and future troubleshooting.
+
+* Successfully deployed the infrastructure using **AWS CDK**, including:
+  * Amazon S3
+  * AWS Lambda
+  * Amazon DynamoDB
+  * IAM Role
+
+Thereby helping the infrastructure deployment process become automated, consistent across environments, and convenient for version management.
+
+* Checked and confirmed that AWS resources were successfully created after deployment using AWS CDK.
+
+* Successfully tested the entire image processing flow and metadata storage:
+
+```text
+Upload Image
+      │
+      ▼
+Amazon S3 (Input Bucket)
+      │
+      ▼
+AWS Lambda
+      │
+      ├── Resize Image
+      ├── Compress Image
+      │
+      ▼
+Amazon S3 (Output Bucket)
+      │
+      ▼
+Amazon DynamoDB
+      │
+      ▼
+Save metadata and processing status
+```
+
+* Updated the deployment documentation and system architecture diagram after adding Amazon DynamoDB, ensuring it accurately reflects the current processing flow and infrastructure structure.
+
+* Completed the **Core Image Optimization Pipeline** building phase, laying the foundation for deploying **Amazon API Gateway** and building the Upload API service for the system next week.

@@ -1,57 +1,63 @@
----
 title: "Week 1 Worklog"
-date: 2024-01-01
+date: 2026-06-22
 weight: 1
 chapter: false
 pre: " <b> 1.1. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 1 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Understand the requirements and objectives of the **Automatic Image Optimization System on AWS** project.
+* Get familiar with Serverless architecture on AWS.
+* Research the AWS services to be used in the system.
+* Design the overall architecture of the project.
+* Set up the development environment and initialize the repository.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks to be implemented this week:
 
+| Day | Task | Start Date | Completion Date | Documentation Source |
+| --- | --- | --- | --- | --- |
+| Monday | - Analyze project requirements <br> - Determine system Input/Output <br> - Analyze Upload → Processing → Output flow | 22/06/2026 | 22/06/2026 | Project requirements document |
+| Tuesday | - Learn about Serverless architecture on AWS <br>&emsp; + Amazon S3 <br>&emsp; + AWS Lambda <br>&emsp; + Amazon DynamoDB <br>&emsp; + Amazon CloudWatch <br>&emsp; + Amazon SNS <br>&emsp; + AWS IAM | 23/06/2026 | 23/06/2026 | https://docs.aws.amazon.com/ |
+| Wednesday | - Learn about Amazon S3 <br>&emsp; + Bucket <br>&emsp; + Object <br>&emsp; + Bucket Policy <br>&emsp; + Event Notification <br> - Research input and output image storage solutions | 24/06/2026 | 24/06/2026 | https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html |
+| Thursday | - Learn about AWS Lambda <br>&emsp; + Function <br>&emsp; + Runtime <br>&emsp; + Handler <br>&emsp; + Execution Role <br> - Research Amazon S3 → AWS Lambda processing flow | 25/06/2026 | 25/06/2026 | https://docs.aws.amazon.com/lambda/latest/dg/welcome.html |
+| Friday | - Design system architecture diagram <br> - Initialize GitHub Repository <br> - Initialize AWS CDK project <br> - Install AWS CLI and development environment | 26/06/2026 | 26/06/2026 | https://docs.aws.amazon.com/cdk/api/v2/ |
 
 ### Week 1 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Completed understanding the requirements, scope, and objectives of the **Automatic Image Optimization System on AWS** project, and identified the main components to be built in the system.
 
-* Successfully created and configured an AWS Free Tier account.
+* Grasped the **Serverless** architecture and the roles of the AWS services to be used, including:
+  * Amazon S3
+  * AWS Lambda
+  * Amazon DynamoDB
+  * Amazon CloudWatch
+  * Amazon SNS
+  * AWS IAM
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Completed the preliminary system architecture design with the following processing flow:
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+```text
+User
+  │
+  ▼
+Amazon S3 (Input Bucket)
+  │
+  ▼
+AWS Lambda
+  │
+  ├── Amazon S3 (Output Bucket)
+  └── Amazon DynamoDB
+```
 
-* Used AWS CLI to perform basic operations such as:
+* Successfully initialized the **GitHub Repository** and **AWS CDK** project, creating a foundation for source code management and infrastructure deployment using **Infrastructure as Code (IaC)**.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* Fully set up the development environment, including:
+  * Installing Python Virtual Environment.
+  * Installing and configuring AWS CLI.
+  * Installing AWS CDK.
+  * Connecting the AWS account for deployment and testing purposes.
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Developed the project implementation plan, agreed on the overall architecture, and divided tasks among team members.
+
+* Finalized the architecture diagram and initial design documentation as a basis for deploying **Amazon S3**, **AWS Lambda**, and the **Image Processing Pipeline** in the following week.

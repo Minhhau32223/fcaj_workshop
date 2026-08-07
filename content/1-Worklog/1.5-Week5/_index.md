@@ -1,57 +1,73 @@
 ---
 title: "Week 5 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-07-20
+weight: 5
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 5 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Learn about Event-driven architecture on AWS.
+* Deploy Amazon EventBridge into the system.
+* Connect events from Amazon S3 to AWS Lambda.
+* Integrate EventBridge with the Image Processing Pipeline.
+* Complete the image processing architecture based on the Event-driven model.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks to be implemented this week:
 
+| Day | Task | Start Date | Completion Date | Documentation Source |
+| --- | --- | --- | --- | --- |
+| Monday | - Learn about Event-driven architecture <br> - Learn about Amazon EventBridge <br> - Research Event Bus, Rule, and Target | 20/07/2026 | 20/07/2026 | https://docs.aws.amazon.com/eventbridge/latest/userguide/what-is-amazon-eventbridge.html |
+| Tuesday | - Build EventBridge Rule <br> - Set up Event Pattern for S3 Object Created event <br> - Analyze Event Payload structure | 21/07/2026 | 21/07/2026 | https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-event-patterns.html |
+| Wednesday | - Connect Amazon S3 with EventBridge <br> - Connect EventBridge with Image Processing Lambda <br> - Test Event Payload | 22/07/2026 | 22/07/2026 | https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventBridge.html |
+| Thursday | - Adjust Image Processing Lambda to handle EventBridge Event <br> - Test with multiple image types <br> - Check for duplicate processing cases | 23/07/2026 | 23/07/2026 | https://docs.aws.amazon.com/lambda/latest/dg/with-eventbridge.html |
+| Friday | - Deploy EventBridge using AWS CDK <br> - Test the entire pipeline <br> - Troubleshoot errors arising during event processing | 24/07/2026 | 24/07/2026 | https://docs.aws.amazon.com/cdk/api/v2/ |
 
 ### Week 5 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Understood the operating principles of **Event-driven Architecture** and how to apply this model to the image processing system on AWS.
 
-* Successfully created and configured an AWS Free Tier account.
+* Successfully researched and deployed **Amazon EventBridge** as an event orchestration intermediary between AWS services, helping to reduce direct dependency between Amazon S3 and AWS Lambda.
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+* Successfully built and configured the **EventBridge Rule** to listen for the **Object Created** event from Amazon S3.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Completed the connection between **Amazon S3**, **Amazon EventBridge**, and **AWS Lambda**, ensuring Lambda is triggered automatically when a new image is uploaded to the Input Bucket.
 
-* Used AWS CLI to perform basic operations such as:
+* Adjusted the Image Processing Lambda to receive and process data in the EventBridge Event format, while verifying the accuracy of the Event Payload.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* Deployed the EventBridge infrastructure using **AWS CDK**, helping infrastructure management and deployment stay synchronized with previously built components.
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Successfully tested the entire image processing flow following the Event-driven model:
+
+```text
+User
+      │
+      ▼
+Frontend
+      │
+      ▼
+API Gateway
+      │
+      ▼
+Upload Lambda
+      │
+      ▼
+Amazon S3 (Input Bucket)
+      │
+      ▼
+Amazon EventBridge
+      │
+      ▼
+Image Processing Lambda
+      │
+      ├── Resize Image
+      ├── Compress Image
+      ├── Upload Output Image
+      └── Save Metadata
+      │
+      ▼
+Amazon S3 (Output Bucket)
+      │
+      ▼
+Amazon DynamoDB

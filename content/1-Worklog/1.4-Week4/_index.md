@@ -1,57 +1,101 @@
 ---
 title: "Week 4 Worklog"
-date: 2024-01-01
-weight: 1
+date: 2026-07-13
+weight: 4
 chapter: false
 pre: " <b> 1.4. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 4 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Expand the system architecture with Amazon API Gateway.
+* Build the Upload API for the system.
+* Learn about the Amazon S3 Presigned URL mechanism.
+* Deploy API Gateway using AWS CDK.
+* Support Frontend and Backend integration via API.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks to be implemented this week:
 
+| Day | Task | Start Date | Completion Date | Documentation Source |
+| --- | --- | --- | --- | --- |
+| Monday | - Learn about Amazon API Gateway <br> - Research REST API and HTTP Methods <br> - Learn the API Gateway → Lambda Integration model | 13/07/2026 | 13/07/2026 | https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html |
+| Tuesday | - Build Upload Lambda <br> - Design the `POST /images/upload` API <br> - Learn the Amazon S3 Presigned URL mechanism | 14/07/2026 | 14/07/2026 | https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html |
+| Wednesday | - Deploy API Gateway using AWS CDK <br> - Connect API Gateway with Upload Lambda <br> - Test API using Postman | 15/07/2026 | 15/07/2026 | https://docs.aws.amazon.com/cdk/api/v2/ |
+| Thursday | - Support integrating Frontend with Upload API <br> - Test Upload via Presigned URL <br> - Check CORS and IAM Permissions | 16/07/2026 | 16/07/2026 | https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-cors.html |
+| Friday | - Test the entire Upload Flow <br> - Troubleshoot API errors and infrastructure configuration <br> - Update system architecture documentation | 17/07/2026 | 17/07/2026 | https://docs.aws.amazon.com/whitepapers/latest/serverless-multi-tier-architectures-api-gateway-lambda/serverless-multi-tier-architectures-api-gateway-lambda.html |
 
 ### Week 4 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Completed researching and deploying **Amazon API Gateway** as the communication gateway between the Frontend application and AWS services in the Serverless architecture.
 
-* Successfully created and configured an AWS Free Tier account.
+* Successfully designed and deployed the Upload API:
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+```text
+POST /images/upload
+```
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+The API is responsible for receiving requests from the Frontend, calling the Upload Lambda to generate a **Presigned URL**, and then returning the result to the user.
 
-* Used AWS CLI to perform basic operations such as:
+* Built the **Upload Lambda** with the following functions:
+  * Receive requests from API Gateway.
+  * Validate uploaded file information.
+  * Generate a Presigned URL for direct upload to Amazon S3.
+  * Return the URL along with necessary information to the Frontend.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* Successfully deployed **Amazon API Gateway** using **AWS CDK**, helping the entire infrastructure to be managed under the **Infrastructure as Code (IaC)** model and easily redeployed when needed.
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Completed the connection between system components:
+
+```text
+Frontend
+      │
+      ▼
+Amazon API Gateway
+      │
+      ▼
+Upload Lambda
+      │
+      ▼
+Generate Presigned URL
+      │
+      ▼
+Amazon S3 (Input Bucket)
+```
+
+* Tested the API using **Postman** and confirmed:
+  * The API works stably.
+  * Returns a valid Presigned URL.
+  * Images can be uploaded directly to Amazon S3 via the provided URL.
+  * Successful uploads with various popular image formats such as JPG, PNG, and WEBP.
+
+* Supported integrating the Upload API with the Frontend, allowing users to upload images to the system via the API Gateway instead of directly accessing Amazon S3.
+
+* Checked and adjusted the **IAM Role**, **Bucket Policy**, and **CORS Configuration**, ensuring the Upload Lambda is only granted necessary permissions and the Frontend can securely access the API.
+
+* Updated the deployment documentation and system architecture diagram after adding API Gateway, fully reflecting the system's new data processing flow.
+
+* Successfully tested the complete Upload flow:
+
+```text
+User
+      │
+      ▼
+Frontend
+      │
+      ▼
+Amazon API Gateway
+      │
+      ▼
+Upload Lambda
+      │
+      ▼
+Generate Presigned URL
+      │
+      ▼
+Amazon S3 (Input Bucket)
+      │
+      ▼
+Image Processing Pipeline
+```
+
+* Completed the **Upload Service** building phase, creating a foundation for next week to expand the system with an **Event-driven** architecture using **Amazon EventBridge**, while increasing scalability and reducing dependencies between system components.

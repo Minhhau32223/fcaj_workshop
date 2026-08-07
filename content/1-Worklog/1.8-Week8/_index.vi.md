@@ -1,59 +1,53 @@
 ---
 title: "Worklog Tuần 8"
-date: 2024-01-01
-weight: 1
+date: 2026-08-10
+weight: 8
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 
 ### Mục tiêu tuần 8:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hoàn thiện project **Automatic Image Optimization System on AWS**.
+* Rà soát lại các thành phần đã triển khai trong những tuần trước.
+* Hoàn thiện architecture diagram và tài liệu kỹ thuật.
+* Tổng hợp kết quả và chuẩn bị nội dung presentation.
+* Tổng kết kiến thức và kinh nghiệm sau quá trình thực tập.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Review source code <br> - Kiểm tra cấu trúc project <br> - Rà soát các AWS resources <br> - Kiểm tra các lỗi còn tồn tại | 10/08/2026 | 10/08/2026 | Project Documentation |
+| 3 | - Hoàn thiện Architecture Diagram <br> - Rà soát flow Upload → Processing → Output <br> - Cập nhật Monitoring và Security flow | 11/08/2026 | 11/08/2026 | AWS Documentation |
+| 4 | - Hoàn thiện README <br> - Hoàn thiện Setup Guide <br> - Hoàn thiện Deployment Guide <br> - Hoàn thiện Testing Guide | 12/08/2026 | 12/08/2026 | Project Documentation |
+| 5 | - Hoàn thiện Cleanup Guide <br> - Rà soát AWS resources <br> - Kiểm tra các tài nguyên cần xóa sau khi demo | 13/08/2026 | 13/08/2026 | AWS Documentation |
+| 6 | - Tổng hợp kết quả project <br> - Chuẩn bị presentation <br> - Chuẩn bị nội dung demo <br> - Tổng kết quá trình thực tập | 14/08/2026 | 15/08/2026 | Project Documentation |
 
 ### Kết quả đạt được tuần 8:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hoàn thiện các thành phần chính của project **Automatic Image Optimization System on AWS** đã được triển khai trong các tuần trước.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Rà soát lại toàn bộ kiến trúc hệ thống và cách các thành phần kết nối với nhau:
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+```text
+Frontend
+    ↓
+API Gateway
+    ↓
+Upload Lambda
+    ↓
+Presigned URL
+    ↓
+S3 Input
+    ↓
+EventBridge
+    ↓
+Image Processing Lambda
+    ├── Resize
+    ├── Compress
+    └── Convert
+    ↓
+S3 Output
+    ↓
+DynamoDB
