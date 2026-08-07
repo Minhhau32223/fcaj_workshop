@@ -21,7 +21,7 @@ Through this blog, I strengthened my understanding of Amazon SQS and gained deep
 
 ## Illustration
 
-![overview](../../images/3-BlogsPosted/blog_1.png)
+![overview](/static/images/3-BlogsPosted/blog_1.png)
 
 ## Blog Link
 

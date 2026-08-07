@@ -53,6 +53,6 @@ Most importantly, the event showed me the importance of teamwork, effective comm
 
 ## Photos from the Event
 Photo 1: The whole team competing
-![h1](/images/4-Event/event1-1.jpg)
+![h1](/static/images/4-Event/event1-1.jpg)
 Photo 2: Scoreboard display
-![h1](/images/4-Event/event1-2.jpg)
+![h1](/static/images/4-Event/event1-2.jpg)

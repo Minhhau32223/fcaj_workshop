@@ -55,7 +55,7 @@ Bên cạnh kiến thức chuyên môn, sự kiện còn giúp tôi rèn luyện
 
 ## Một số hình ảnh khi tham gia sự kiện
 Hình 1: cả team tham thi đấu
-![h1](/images/4-Event/event1-1.jpg)
+![h1](/static/images/4-Event/event1-1.jpg)
 Hình 2: màn hình tính điểm
-![h1](/images/4-Event/event1-2.jpg)
+![h1](/static/images/4-Event/event1-2.jpg)
 > Tổng thể, Cloud Architect Event là một hoạt động giúp củng cố kiến thức Cloud, đồng thời rèn luyện tư duy kiến trúc hệ thống và kỹ năng làm việc nhóm thông qua hình thức thi đấu mang tính thực chiến.

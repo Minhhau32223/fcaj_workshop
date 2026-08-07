@@ -20,7 +20,7 @@ Through this blog, I strengthened my understanding of Event-Driven Architecture 
 
 ## Illustration
 
-![overview](../../images/3-BlogsPosted/blog_2.png)
+![overview](/static/images/3-BlogsPosted/blog_2.png)
 
 ## Blog Link
 

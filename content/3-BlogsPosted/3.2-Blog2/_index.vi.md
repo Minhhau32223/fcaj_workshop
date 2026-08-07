@@ -21,7 +21,7 @@ Bài viết giúp em củng cố kiến thức về Event-Driven Architecture, �
 
 ## Hình minh họa
 
-![overview](../../images/3-BlogsPosted/blog_2.png)
+![overview](/static/images/3-BlogsPosted/blog_2.png)
 
 ## Link bài viết
 
