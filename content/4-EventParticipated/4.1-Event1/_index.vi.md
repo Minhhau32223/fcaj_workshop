@@ -54,6 +54,6 @@ Thay vì chỉ tập trung ghi nhớ chức năng của từng dịch vụ, tôi
 Bên cạnh kiến thức chuyên môn, sự kiện còn giúp tôi rèn luyện kỹ năng giao tiếp, làm việc nhóm và đưa ra quyết định trong điều kiện áp lực thời gian. Đây đều là những kỹ năng quan trọng mà tôi sẽ tiếp tục phát triển trong quá trình học tập cũng như công việc sau này.
 
 ## Một số hình ảnh khi tham gia sự kiện
-
-> Thêm hình ảnh của nhóm và các hoạt động trong Cloud Architect Event tại đây.
+Hình 1: cả team tham thi đấu
+Hình 2: màn hình tính điểm
 > Tổng thể, Cloud Architect Event là một hoạt động giúp củng cố kiến thức Cloud, đồng thời rèn luyện tư duy kiến trúc hệ thống và kỹ năng làm việc nhóm thông qua hình thức thi đấu mang tính thực chiến.

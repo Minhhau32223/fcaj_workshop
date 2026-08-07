@@ -72,6 +72,11 @@ Tham gia sự kiện **“Foundations & Agent Setup”** là một cơ hội tuy
 - IDE **Kuro** là một công cụ thú vị, giúp tối ưu hóa đáng kể thời gian xây dựng và tích hợp giao diện.
 
 #### Một số hình ảnh khi tham gia sự kiện
-
+-Ảnh 1 bắt đầu buổi event
+![h1](/images/4-Event/event2-1.jpg)
+-Ảnh 2 chia sẽ kiến thức
+![h1](/images/4-Event/event2-2.jpg)
+-Ảnh 3 hands-on
+![h1](/images/4-Event/event2-3.jpg)
 
 > Tổng thể, sự kiện mang lại giá trị thực tiễn rất cao. Quá trình chuyển tiếp mượt mà từ lý thuyết tổng quan đến việc tự tay triển khai hạ tầng AI không chỉ bổ sung kiến thức chuyên môn mà còn tiếp thêm rất nhiều động lực để tôi theo đuổi con đường Cloud Engineering.
