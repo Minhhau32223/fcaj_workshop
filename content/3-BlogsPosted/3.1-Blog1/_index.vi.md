@@ -7,6 +7,7 @@ pre: " <b> 3.1. </b> "
 ---
 
 
+
 Trong quá trình thực tập và tìm hiểu về các dịch vụ Serverless trên AWS, em đã thực hiện một bài chia sẻ về Amazon Simple Queue Service (Amazon SQS) trên cộng đồng AWS Study Group. Nội dung bài viết giới thiệu vai trò của Amazon SQS trong việc xây dựng kiến trúc xử lý bất đồng bộ (Asynchronous Architecture), giúp tăng khả năng mở rộng, giảm tải hệ thống và nâng cao độ tin cậy của ứng dụng.
 
 Các nội dung chính của bài viết gồm:
