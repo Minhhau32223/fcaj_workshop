@@ -72,6 +72,10 @@ Attending the **“Foundations & Agent Setup”** event was a wonderful opportun
 - The **Kuro** IDE is an interesting tool that significantly optimizes the time spent building and integrating interfaces.
 
 #### Some Photos from the Event
-
-
+Photo 1: Opening the event
+![h1](../../../images/4-Event/event2-1.jpg)
+Photo 2: Sharing knowledge
+![h1](../../../images/4-Event/event2-2.jpg)
+Photo 3: Hands-on session
+![h1](../../../images/4-Event/event2-3.jpg)
 > Overall, the event brought very high practical value. The smooth transition from theoretical overview to personally deploying AI infrastructure not only supplemented my professional knowledge but also gave me a lot of motivation to pursue the Cloud Engineering path.
