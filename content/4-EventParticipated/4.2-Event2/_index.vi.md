@@ -1,5 +1,5 @@
 ---
-title: "oundations & Agent Setup - Amazon Bedrock AgentCore"
+title: "Foundations & Agent Setup - Amazon Bedrock AgentCore"
 date: 2026-08-01
 weight: 1
 chapter: false

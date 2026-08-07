@@ -1,132 +1,77 @@
 ---
-title: "Event 2"
-date: 2024-01-01
+title: "Foundations & Agent Setup - Amazon Bedrock AgentCore"
+date: 2026-08-01
 weight: 1
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Event Report: “Foundations & Agent Setup - Amazon Bedrock AgentCore”
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+### Purpose of the Event
 
-### Event Objectives
+- Provide foundational knowledge and steps for setting up an Agent (Foundations & Agent Setup).
+- Introduce an overview of the architecture and core components of Amazon Bedrock AgentCore.
+- Provide hands-on guidance (Hands-on Lab) for deploying an Agent, connecting tools, and integrating security.
+- Help attendees familiarize themselves with the process of building a Web UI that interacts with an AI Agent.
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+### List of Speakers
 
-### Speakers
-
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+- **Nghia Tran** - Speaker for the Workshop introduction & Amazon Bedrock AgentCore Overview
+- **Anh Pham** - Instructor for the Hands-on Lab
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+#### Overview of Amazon Bedrock AgentCore (09:00 – 10:00)
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+Led by speaker Nghia Tran, this section focused on introducing the core architectural components of Bedrock AgentCore:
+- **Runtime:** The execution environment and logic processing of AI Agents.
+- **Gateway:** The intermediary communication gateway that receives and coordinates API requests.
+- **Identity:** The mechanism for managing identity, security, and access rights to system resources.
 
-#### Transitioning to modern application architecture – Microservices
+#### Hands-on Lab (10:00 – 11:00)
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+Under the detailed guidance of Mr. Anh Pham, participants directly performed the following steps:
+- **Deploy a basic agent:** Initialize and deploy a basic AI Agent in the AgentCore environment.
+- **Integration:** Connect the Agent with external tools and Knowledge Bases to enhance information processing capabilities.
+- **Web UI & Security:** Build a User Interface (Web UI) and integrate the Amazon Cognito service for user authentication.
+- **Using Kuro:** Familiarize and apply the Kuro tool during the setup process.
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+### What I Learned
 
-#### Domain-Driven Design (DDD)
+#### AI System Design Mindset
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+- Understand the lifecycle and operation of an Agent through the Runtime, Gateway, and Identity components.
+- Grasp the method of connecting AI with enterprise data (Knowledge Bases) instead of relying solely on general language models.
 
-#### Event-Driven Architecture
+#### Cloud Practical Skills
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+- Know how to operate directly on AWS to deploy a complete AI Agent.
+- Understand the process of integrating Amazon Cognito into a Web UI, ensuring a secure Authentication flow according to standard practices.
 
-#### Compute Evolution
+### Application to Work
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
-
-### Key Takeaways
-
-#### Design Mindset
-
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
-
-#### Technical Architecture
-
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
-
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
-
-### Applying to Work
-
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+- **Backend Module Development:** Integrate knowledge about Identity flows and Amazon Cognito into the design and deployment of authorization and authentication modules (such as the AUTH module) for real-world software projects.
+- **Building AI Features:** Apply Amazon Bedrock to research and develop automation features, smart chatbots, or data retrieval tools from Knowledge Bases.
+- **Serverless Practice:** Leverage the rapid deployment mindset (deploy basic agent, external tools) to design leaner and more flexible Backend architectures.
 
 ### Event Experience
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Attending the **“Foundations & Agent Setup”** event was a wonderful opportunity to take the first steps in getting acquainted with the AWS Generative AI ecosystem. Some highlight experiences:
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+#### Perfect Combination of Theory and Practice
+- The presentation by Mr. **Nghia Tran** was very concise, making it easy for me to visualize the overall picture of AgentCore, especially how Runtime and Identity coordinate with each other.
+- Right after, the Hands-on session by Mr. **Anh Pham** helped turn those theories into practical experiences, avoiding the initial confusion when getting used to a new platform.
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+#### Practical Technical Experience
+- Personally **deploying a basic agent** and connecting it with **external tools** made me realize that integrating AI into current systems is not too complicated if the architecture is well grasped.
+- In particular, the integration of **Amazon Cognito** into the Web UI was very useful for my Backend orientation, helping me reinforce my knowledge of user security system design.
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+#### Lessons Learned
+- The combination of AI (Bedrock) and traditional management services (Cognito) opens up many new directions for building modern, highly secure applications.
+- The **Kuro** IDE is an interesting tool that significantly optimizes the time spent building and integrating interfaces.
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-Photo 1: Opening the event
-![h1](/images/4-Event/event2-1.jpg)
-Photo 2: Sharing knowledge
-![h1](/images/4-Event/event2-2.jpg)
-Photo 3: Hands-on session
-![h1](/images/4-Event/event2-3.jpg)
+#### Some Photos from the Event
 
 
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+> Overall, the event brought very high practical value. The smooth transition from theoretical overview to personally deploying AI infrastructure not only supplemented my professional knowledge but also gave me a lot of motivation to pursue the Cloud Engineering path.
