@@ -1,7 +1,7 @@
 ---
 title: "Foundations & Agent Setup - Amazon Bedrock AgentCore"
 date: 2026-08-01
-weight: 1
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
