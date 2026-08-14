@@ -200,3 +200,6 @@ For educational and testing purposes, the estimated monthly cost is only a few U
 #### Long-Term Value
 
 The system provides a foundation for developing cloud-based multimedia processing applications. In the future, it can be extended with additional capabilities such as image format conversion, watermarking, AI-based image enhancement, content recognition using Amazon Rekognition, or CDN integration to optimize image delivery.
+
+![overview](/static/images/5-Workshop/5.1-Workshop-overview/diagram1.jpg)
+*System Architecture Diagram*

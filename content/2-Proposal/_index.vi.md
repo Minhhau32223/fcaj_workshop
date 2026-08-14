@@ -200,3 +200,6 @@ Chi phí chủ yếu đến từ các dịch vụ AWS.
 #### Giá trị dài hạn
 
 Hệ thống là nền tảng để phát triển các ứng dụng xử lý đa phương tiện trên nền tảng đám mây. Trong tương lai có thể mở rộng thêm các chức năng như chuyển đổi định dạng ảnh, watermark, AI Image Enhancement, nhận diện nội dung bằng Amazon Rekognition hoặc tích hợp CDN để tối ưu phân phối hình ảnh.
+
+![overview](/static/images/5-Workshop/5.1-Workshop-overview/diagram1.jpg)
+*Sơ đồ kiến trúc hệ thống*
