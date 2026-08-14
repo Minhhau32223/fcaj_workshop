@@ -1,0 +1,482 @@
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.163.3"><meta name=description content><meta name=author content="thienlh@thienlu.com"><link rel=icon href=https://minhhau32223.github.io/fcaj_workshop/images/favicon.png type=image/png><title>Deploy Backend Infrastructure with AWS CDK :: Internship Report</title><link href=https://minhhau32223.github.io/fcaj_workshop/css/nucleus.css?1786697284 rel=stylesheet><link href=https://minhhau32223.github.io/fcaj_workshop/css/fontawesome-all.min.css?1786697284 rel=stylesheet><link href=https://minhhau32223.github.io/fcaj_workshop/css/hybrid.css?1786697284 rel=stylesheet><link href=https://minhhau32223.github.io/fcaj_workshop/css/featherlight.min.css?1786697284 rel=stylesheet><link href=https://minhhau32223.github.io/fcaj_workshop/css/perfect-scrollbar.min.css?1786697284 rel=stylesheet><link href=https://minhhau32223.github.io/fcaj_workshop/css/auto-complete.css?1786697284 rel=stylesheet><link href=https://minhhau32223.github.io/fcaj_workshop/css/atom-one-dark-reasonable.css?1786697284 rel=stylesheet><link href=https://minhhau32223.github.io/fcaj_workshop/css/theme.css?1786697284 rel=stylesheet><link href=https://minhhau32223.github.io/fcaj_workshop/css/hugo-theme.css?1786697284 rel=stylesheet><link href=https://minhhau32223.github.io/fcaj_workshop/css/theme-workshop.css?1786697284 rel=stylesheet><script src=https://minhhau32223.github.io/fcaj_workshop/js/jquery-3.3.1.min.js?1786697284></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.7-cdk-deployment/5.7.3-deploy-backend/><nav id=sidebar class=showVisitedLinks><div id=header-wrapper><div id=header><a id=logo href=https://minhhau32223.github.io/fcaj_workshop/><svg id="Layer_1" data-name="Layer 1" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff}.cls-2{fill:#fff;fill-rule:evenodd}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09 10.85a4.7 4.7.0 00.19 1.48 7.73 7.73.0 00.54 1.19.77.77.0 01.12.38.64.64.0 01-.32.49l-1 .7a.83.83.0 01-.44.15.69.69.0 01-.49-.23 3.8 3.8.0 01-.6-.77q-.25-.42-.51-1a6.14 6.14.0 01-4.89 2.3 4.54 4.54.0 01-3.32-1.19 4.27 4.27.0 01-1.22-3.2 4.28 4.28.0 011.46-3.4A6.06 6.06.0 017.69 6.46a12.47 12.47.0 011.76.13q.92.13 1.91.36V5.73a3.65 3.65.0 00-.79-2.66A3.81 3.81.0 007.86 2.3a7.71 7.71.0 00-1.79.22 12.78 12.78.0 00-1.79.57 4.55 4.55.0 01-.58.22h-.26q-.35.0-.35-.52V2a1.09 1.09.0 01.12-.58 1.2 1.2.0 01.47-.35A10.88 10.88.0 015.77.32 10.19 10.19.0 018.36.0a6 6 0 014.35 1.35 5.49 5.49.0 011.38 4.09zM7.34 13.38a5.36 5.36.0 001.72-.31A3.63 3.63.0 0010.63 12 2.62 2.62.0 0011.19 11a5.63 5.63.0 00.16-1.44v-.7a14.35 14.35.0 00-1.53-.28 12.37 12.37.0 00-1.56-.1 3.84 3.84.0 00-2.47.67A2.34 2.34.0 005 11a2.35 2.35.0 00.61 1.76A2.4 2.4.0 007.34 13.38zm13.35 1.8a1 1 0 01-.64-.16 1.3 1.3.0 01-.35-.65L15.81 1.51a3 3 0 01-.15-.67.36.36.0 01.41-.41H17.7a1 1 0 01.65.16 1.4 1.4.0 01.33.65l2.79 11 2.59-11A1.17 1.17.0 0124.39.6a1.1 1.1.0 01.67-.16H26.4a1.1 1.1.0 01.67.16 1.17 1.17.0 01.32.65L30 12.39 32.88 1.25A1.39 1.39.0 0133.22.6a1 1 0 01.65-.16h1.54a.36.36.0 01.41.41 1.36 1.36.0 010 .26 3.64 3.64.0 01-.12.41l-4 12.86a1.3 1.3.0 01-.35.65 1 1 0 01-.64.16H29.25a1 1 0 01-.67-.17 1.26 1.26.0 01-.32-.67L25.67 3.64l-2.56 10.7a1.26 1.26.0 01-.32.67 1 1 0 01-.67.17zm21.36.44a11.28 11.28.0 01-2.56-.29 7.44 7.44.0 01-1.92-.67 1 1 0 01-.61-.93v-.84q0-.52.38-.52a.9.9.0 01.31.06l.42.17a8.77 8.77.0 001.83.58 9.78 9.78.0 002 .2 4.48 4.48.0 002.43-.55 1.76 1.76.0 00.86-1.57 1.61 1.61.0 00-.45-1.16A4.29 4.29.0 0043 9.22l-2.41-.76A5.15 5.15.0 0138 6.78a3.94 3.94.0 01-.83-2.41 3.7 3.7.0 01.45-1.85 4.47 4.47.0 011.19-1.37 5.27 5.27.0 011.7-.86A7.4 7.4.0 0142.6.0a8.87 8.87.0 011.12.07q.57.07 1.08.19t.95.26a4.27 4.27.0 01.7.29 1.59 1.59.0 01.49.41.94.94.0 01.15.55v.79q0 .52-.38.52a1.76 1.76.0 01-.64-.2 7.74 7.74.0 00-3.2-.64 4.37 4.37.0 00-2.21.47 1.6 1.6.0 00-.79 1.48 1.58 1.58.0 00.49 1.18 4.94 4.94.0 001.83.92L44.55 7a5.08 5.08.0 012.57 1.6A3.76 3.76.0 0147.9 11a4.21 4.21.0 01-.44 1.93 4.4 4.4.0 01-1.21 1.47 5.43 5.43.0 01-1.85.93A8.25 8.25.0 0142.05 15.62z"/><path class="cls-2" d="M45.19 23.81C39.72 27.85 31.78 30 25 30A36.64 36.64.0 01.22 20.57c-.51-.46-.06-1.09.56-.74A49.78 49.78.0 0025.53 26.4 49.23 49.23.0 0044.4 22.53C45.32 22.14 46.1 23.14 45.19 23.81z"/><path class="cls-2" d="M47.47 21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74 3.13-2.2 8.27-1.57 8.86-.83s-.16 5.89-3.09 8.35c-.45.38-.88.18-.68-.32C46.69 25.8 48.17 22.11 47.47 21.21z"/></svg></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=https://minhhau32223.github.io/fcaj_workshop/js/lunr.min.js?1786697284></script><script type=text/javascript src=https://minhhau32223.github.io/fcaj_workshop/js/auto-complete.js?1786697284></script><script type=text/javascript>var baseurl="https://minhhau32223.github.io/fcaj_workshop/"</script><script type=text/javascript src=https://minhhau32223.github.io/fcaj_workshop/js/search.js?1786697284></script></div><div class=highlightable><ul class=topics><li data-nav-id=/1-worklog/ title=Worklog class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/1-worklog/><b>1. </b>Worklog
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/1-worklog/1.1-week1/ title="Week 1 Worklog" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/1-worklog/1.1-week1/><b>1.1. </b>Week 1 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.2-week2/ title="Week 2 Worklog" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/1-worklog/1.2-week2/><b>1.2. </b>Week 2 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.3-week3/ title="Week 3 Worklog" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/1-worklog/1.3-week3/><b>1.3. </b>Week 3 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.4-week4/ title="Week 4 Worklog" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/1-worklog/1.4-week4/><b>1.4. </b>Week 4 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.5-week5/ title="Week 5 Worklog" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/1-worklog/1.5-week5/><b>1.5. </b>Week 5 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.6-week6/ title="Week 6 Worklog" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/1-worklog/1.6-week6/><b>1.6. </b>Week 6 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.7-week7/ title="Week 7 Worklog" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/1-worklog/1.7-week7/><b>1.7. </b>Week 7 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.8-week8/ title="Week 8 Worklog" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/1-worklog/1.8-week8/><b>1.8. </b>Week 8 Worklog
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/2-proposal/ title=Proposal class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/2-proposal/><b>2. </b>Proposal
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/3-blogsposted/ title="Blogs Posted" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/3-blogsposted/><b>3. </b>Blogs Posted
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/3-blogsposted/3.1-blog1/ title="Amazon SQS – The Key to Asynchronous Architecture on AWS" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/3-blogsposted/3.1-blog1/><b>3.1. </b>Amazon SQS – The Key to Asynchronous Architecture on AWS
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/3-blogsposted/3.2-blog2/ title="Event-Driven Architecture – The Foundation of Serverless Systems on AWS" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/3-blogsposted/3.2-blog2/><b>3.2. </b>Event-Driven Architecture – The Foundation of Serverless Systems on AWS
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/3-blogsposted/3.3-blog3/ title="AWS CDK – Infrastructure as Code for Modern Cloud Infrastructure" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/3-blogsposted/3.3-blog3/><b>3.3. </b>AWS CDK – Infrastructure as Code for Modern Cloud Infrastructure
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/4-eventparticipated/ title="Attended Events" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/4-eventparticipated/><b>4. </b>Attended Events
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/4-eventparticipated/4.1-event1/ title="Cloud Architect" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/4-eventparticipated/4.1-event1/><b>4.1. </b>Cloud Architect
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/4-eventparticipated/4.2-event2/ title="Foundations & Agent Setup - Amazon Bedrock AgentCore" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/4-eventparticipated/4.2-event2/><b>4.2. </b>Foundations & Agent Setup - Amazon Bedrock AgentCore
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/5-workshop/ title=Workshop class="dd-item
+parent"><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/><b>5. </b>Workshop
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/5-workshop/5.1-workshop-overview/ title=Introduction class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.1-workshop-overview/><b>5.1. </b>Introduction
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.2-prerequiste/ title=Prerequiste class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.2-prerequiste/><b>5.2. </b>Prerequiste
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.3-s3-setup/ title="Configure Amazon S3" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.3-s3-setup/><b>5.3. </b>Configure Amazon S3
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/5-workshop/5.3-s3-setup/5.3.1-create-buckets/ title="Create S3 Buckets for Image Storage" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.3-s3-setup/5.3.1-create-buckets/><b>5.3.1 </b>Create S3 Buckets for Image Storage
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.3-s3-setup/5.3.2-configure-trigger/ title="Configure S3 Trigger for AWS Lambda" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.3-s3-setup/5.3.2-configure-trigger/><b>5.3.2 </b>Configure S3 Trigger for AWS Lambda
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/5-workshop/5.3-s3-vpc/ title="Access S3 from VPC" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.3-s3-vpc/><b>5.3. </b>Access S3 from VPC
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/ title="Create a gateway endpoint" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/><b>5.3.1 </b>Create a gateway endpoint
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.3-s3-vpc/5.3.2-test-gwe/ title="Test the Gateway Endpoint" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.3-s3-vpc/5.3.2-test-gwe/><b>5.3.2 </b>Test the Gateway Endpoint
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/5-workshop/5.4-lambda-deployment/ title="Deploying AWS Lambda for Image Processing" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.4-lambda-deployment/><b>5.4 </b>Deploying AWS Lambda for Image Processing
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/5-workshop/5.4-lambda-deployment/5.4.1-create-lambda/ title="Create an AWS Lambda Function" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.4-lambda-deployment/5.4.1-create-lambda/><b>5.4.1 </b>Create an AWS Lambda Function
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.4-lambda-deployment/5.4.2-configure-lambda/ title="Configure the AWS Lambda Function" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.4-lambda-deployment/5.4.2-configure-lambda/><b>5.4.2 </b>Configure the AWS Lambda Function
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.4-lambda-deployment/5.4.3-test-upload/ title="Testing the Image Upload and Processing Workflow" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.4-lambda-deployment/5.4.3-test-upload/><b>5.4.3 </b>Testing the Image Upload and Processing Workflow
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/5-workshop/5.4-s3-onprem/ title="Access S3 from on-premises" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.4-s3-onprem/><b>5.4. </b>Access S3 from on-premises
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/5-workshop/5.4-s3-onprem/5.4.1-prepare/ title="Prepare the environment" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.4-s3-onprem/5.4.1-prepare/><b>5.4.1 </b>Prepare the environment
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/ title="Create an S3 Interface endpoint" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/><b>5.4.2 </b>Create an S3 Interface endpoint
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.4-s3-onprem/5.4.3-test-endpoint/ title="Test the Interface Endpoint" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.4-s3-onprem/5.4.3-test-endpoint/><b>5.4.3 </b>Test the Interface Endpoint
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.4-s3-onprem/5.4.4-dns-simulation/ title="On-premises DNS Simulation" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.4-s3-onprem/5.4.4-dns-simulation/><b>5.4.4 </b>On-premises DNS Simulation
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/5-workshop/5.5-dynamodb/ title="Storing Metadata with Amazon DynamoDB" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.5-dynamodb/><b>5.5. </b>Storing Metadata with Amazon DynamoDB
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/5-workshop/5.5-dynamodb/5.5.1-create-dynamodb/ title="Create DynamoDB Tables for Metadata Storage" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.5-dynamodb/5.5.1-create-dynamodb/><b>5.5.1 </b>Create DynamoDB Tables for Metadata Storage
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.5-dynamodb/5.5.2-verify-metadata/ title="Checking Metadata in DynamoDB" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.5-dynamodb/5.5.2-verify-metadata/><b>5.5.2 </b>Checking Metadata in DynamoDB
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/5-workshop/5.5-policy/ title="VPC Endpoint Policies" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.5-policy/><b>5.5. </b>VPC Endpoint Policies
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.6-monitoring/ title="Monitoring System with CloudWatch and SNS" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.6-monitoring/><b>5.6 </b>Monitoring System with CloudWatch and SNS
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/5-workshop/5.6-monitoring/5.6.1-cloudwatch-logs/ title="Monitoring Lambda Logs with Amazon CloudWatch" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.6-monitoring/5.6.1-cloudwatch-logs/><b>5.6.1 </b>Monitoring Lambda Logs with Amazon CloudWatch
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.6-monitoring/5.6.2-sns-notification/ title="Configure SNS Notification for Alerts" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.6-monitoring/5.6.2-sns-notification/><b>5.6.2 </b>Configure SNS Notification for Alerts
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/5-workshop/5.7-cdk-deployment/ title="Automating System Deployment with AWS CDK and CI/CD" class="dd-item
+parent"><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.7-cdk-deployment/><b>5.7. </b>Automating System Deployment with AWS CDK and CI/CD
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/5-workshop/5.7-cdk-deployment/5.7.1-deployment-overview/ title="System Deployment Overview" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.7-cdk-deployment/5.7.1-deployment-overview/><b>5.7.1 </b>System Deployment Overview
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.7-cdk-deployment/5.7.2-prerequisite/ title="Prepare Deployment Environment" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.7-cdk-deployment/5.7.2-prerequisite/><b>5.7.2 </b>Prepare Deployment Environment
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.7-cdk-deployment/5.7.3-deploy-backend/ title="Deploy Backend Infrastructure with AWS CDK" class="dd-item
+active"><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.7-cdk-deployment/5.7.3-deploy-backend/><b>5.7.3 </b>Deploy Backend Infrastructure with AWS CDK
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.7-cdk-deployment/5.7.4-deploy-frontend/ title="Deploy Frontend to AWS Amplify" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.7-cdk-deployment/5.7.4-deploy-frontend/><b>5.7.4 </b>Deploy Frontend to AWS Amplify
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.7-cdk-deployment/5.7.5-ci-cd-pipeline/ title="CI/CD Deployment with GitHub Actions" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.7-cdk-deployment/5.7.5-ci-cd-pipeline/><b>5.7.5 </b>CI/CD Deployment with GitHub Actions
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.7-cdk-deployment/5.7.6-verification/ title="Verification After Deployment" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.7-cdk-deployment/5.7.6-verification/><b>5.7.6 </b>Verification After Deployment
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/5-workshop/5.8-cleanup/ title="Cleaning Up AWS Resources After Deployment" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.8-cleanup/><b>5.8 </b>Cleaning Up AWS Resources After Deployment
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/6-self-evaluation/ title=Self-Assessment class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/6-self-evaluation/><b>6. </b>Self-Assessment
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/7-feedback/ title="Sharing and Feedback" class=dd-item><a href=https://minhhau32223.github.io/fcaj_workshop/7-feedback/><b>7. </b>Sharing and Feedback
+<i class="fas fa-check read-icon"></i></a></li></ul><section id=shortcuts><h3>More</h3><ul><li><a class=padding href=https://awsstudygroup.com><i class='fab fa-aws'></i> AWS Study Group - Blog</a></li><li><a class=padding href=https://www.facebook.com/groups/awsstudygroupfcj><i class='fab fa-facebook'></i> AWS Study Group - FB Group</a></li></ul></section><section id=prefooter><hr><ul><li><a class=padding><i class="fas fa-language fa-fw"></i><div class=select-style><select id=select-language onchange="location=this.value"><option id=en value=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.7-cdk-deployment/5.7.3-deploy-backend/ selected>English</option><option id=vi value=https://minhhau32223.github.io/fcaj_workshop/vi/5-workshop/5.7-cdk-deployment/5.7.3-deploy-backend/>Tiếng Việt</option></select>
+<svg id="Capa_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="255" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255"><g><g id="arrow-drop-down"><polygon points="0,63.75 127.5,191.25 255,63.75"/></g></g></svg></div></a></li><li><a class=padding href=# data-clear-history-toggle><i class="fas fa-history fa-fw"></i> Clear History</a></li></ul></section><section id=footer><left><br><br><b>Last Updated</b><br><i><font color=orange>14-08-2026</font>
+</i></left><left><br><br><b>Team</b><br><i><a href=https://www.facebook.com/groups/660548818043427 style=color:orange>First Cloud AI Journey</a>
+</i></left><script async defer src=https://buttons.github.io/buttons.js></script></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i>
+</a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links><a href=https://minhhau32223.github.io/fcaj_workshop/>Internship Report</a> > <a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/>Workshop</a> > <a href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.7-cdk-deployment/>Automating System Deployment with AWS CDK and CI/CD</a> > Deploy Backend Infrastructure with AWS CDK</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><ul><li><a href=#step-1-clone-source-code-and-create-virtual-environment>Step 1: Clone Source Code and Create Virtual Environment</a></li><li><a href=#step-2-configure-environment-variables>Step 2: Configure Environment Variables</a></li><li><a href=#step-3-bootstrap-aws-cdk>Step 3: Bootstrap AWS CDK</a></li><li><a href=#step-4-deploy-backend-infrastructure>Step 4: Deploy Backend Infrastructure</a></li><li><a href=#step-5-build-docker-image-for-backend>Step 5: Build Docker Image for Backend</a></li></ul></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Deploy Backend Infrastructure with AWS CDK</h1><hr><p>After completing the environment preparation, the next step is to deploy the Backend infrastructure using <strong>AWS CDK</strong>.</p><p>The entire Backend infrastructure is defined as <strong>Infrastructure as Code (IaC)</strong> and organized into 5 CDK Stacks:</p><ul><li><code>StorageStack</code>: Deploys the system&rsquo;s storage resources.</li></ul><pre tabindex=0><code>from aws_cdk import (
+    Stack,
+    RemovalPolicy,
+    aws_s3 as s3,
+    aws_dynamodb as _dynamodb,
+)
+from constructs import Construct
+
+
+class StorageStack(Stack):
+    def __init__(self, scope: Construct, construct_id: str, **kwargs) -&gt; None:
+        super().__init__(scope, construct_id, **kwargs)
+
+        self.original_bucket = s3.Bucket(
+            self,
+            &#34;OriginalImageBucket&#34;,
+            bucket_name=&#34;aws-img-opt-original-bucket&#34;,
+            versioned=True,
+            encryption=s3.BucketEncryption.S3_MANAGED,
+            block_public_access=s3.BlockPublicAccess.BLOCK_ALL,
+            removal_policy=RemovalPolicy.DESTROY,
+            auto_delete_objects=True,
+            event_bridge_enabled=True,  # bắt buộc để ProcessingStack&#39;s EventBridge Rule nhận được sự kiện
+            cors=[
+                s3.CorsRule(
+                    allowed_methods=[s3.HttpMethods.GET, s3.HttpMethods.PUT, s3.HttpMethods.POST, s3.HttpMethods.HEAD],
+                    allowed_origins=[&#34;*&#34;],
+                    allowed_headers=[&#34;*&#34;],
+                    max_age=3000
+                )
+            ]
+        )
+
+        self.optimized_bucket = s3.Bucket(
+            self,
+            &#34;OptimizedImageBucket&#34;,
+            bucket_name=&#34;aws-img-opt-optimized-bucket&#34;,
+            versioned=True,
+            encryption=s3.BucketEncryption.S3_MANAGED,
+            block_public_access=s3.BlockPublicAccess.BLOCK_ALL,
+            removal_policy=RemovalPolicy.DESTROY,
+            auto_delete_objects=True,
+        )
+
+       
+        self.table = _dynamodb.Table(
+            self,
+            &#34;ImageMetadata&#34;,
+            table_name=&#34;aws-img-opt-metadata-table&#34;,
+            partition_key=_dynamodb.Attribute(
+                name=&#34;batchId&#34;,
+                type=_dynamodb.AttributeType.STRING,
+            ),
+            sort_key=_dynamodb.Attribute(
+                name=&#34;processingId&#34;,
+                type=_dynamodb.AttributeType.STRING,
+            ),
+            billing_mode=_dynamodb.BillingMode.PAY_PER_REQUEST,
+            removal_policy=RemovalPolicy.DESTROY,
+        )
+
+
+        # Bảng UserMetadata: Lưu thông tin người dùng
+        self.user_table = _dynamodb.Table(
+            self,
+            &#34;UserMetadata&#34;,
+            table_name=&#34;aws-img-opt-user-metadata-table&#34;,
+            partition_key=_dynamodb.Attribute(
+                name=&#34;userId&#34;,
+                type=_dynamodb.AttributeType.STRING,
+            ),
+            billing_mode=_dynamodb.BillingMode.PAY_PER_REQUEST,
+            removal_policy=RemovalPolicy.DESTROY,
+        )
+        self.table.add_global_secondary_index(
+            index_name=&#34;UserImagesIndex&#34;,
+            partition_key=_dynamodb.Attribute(
+                name=&#34;userId&#34;,
+                type=_dynamodb.AttributeType.STRING,
+            ),
+            sort_key=_dynamodb.Attribute(
+                name=&#34;processedAt&#34;,
+                type=_dynamodb.AttributeType.STRING,
+            ),
+            projection_type=_dynamodb.ProjectionType.ALL,
+        )
+
+        from aws_cdk import CfnOutput
+
+        CfnOutput(
+            self,
+            &#34;OriginalImageBucketName&#34;,
+            value=self.original_bucket.bucket_name,
+            description=&#34;Name of the original image bucket&#34;
+        )
+        
+        CfnOutput(
+            self,
+            &#34;OptimizedImageBucketName&#34;,
+            value=self.optimized_bucket.bucket_name,
+            description=&#34;Name of the optimized image bucket&#34;
+        )
+        
+        CfnOutput(
+            self,
+            &#34;ImageMetadataTableName&#34;,
+            value=self.table.table_name,
+            description=&#34;Name of the DynamoDB table for image metadata&#34;
+        )
+
+        CfnOutput(
+            self,
+            &#34;UserMetadataTableName&#34;,
+            value=self.user_table.table_name,
+            description=&#34;Name of the DynamoDB table for user metadata&#34;
+        )
+</code></pre><ul><li><code>ProcessingStack</code>: Deploys components required for the image processing workflow.</li></ul><pre tabindex=0><code>import aws_cdk as cdk
+from aws_cdk import (
+    Stack,
+    Duration,
+    aws_lambda as _lambda,
+    aws_events as events,
+    aws_events_targets as targets,
+    aws_s3 as s3,
+    aws_dynamodb as _dynamodb,
+)
+from constructs import Construct
+
+
+class ProcessingStack(Stack):
+    def __init__(
+        self, scope: Construct, construct_id: str,
+        original_bucket: s3.Bucket,
+        optimized_bucket: s3.Bucket,
+        metadata_table: _dynamodb.Table,
+        **kwargs
+    ) -&gt; None:
+        super().__init__(scope, construct_id, **kwargs)
+
+        self.processor = _lambda.Function(
+            self,
+            &#34;ImageProcessor&#34;,
+            runtime=_lambda.Runtime.PYTHON_3_13,
+            handler=&#34;handler.lambda_handler&#34;,
+            code=_lambda.Code.from_asset(&#34;lambda&#34;,
+                bundling=cdk.BundlingOptions(
+                    image=_lambda.Runtime.PYTHON_3_13.bundling_image,
+                    command=[&#34;bash&#34;, &#34;-c&#34;, &#34;pip install -r requirements.txt -t /asset-output &amp;&amp; cp -r . /asset-output&#34;],
+                ),
+            ),
+            timeout=Duration.seconds(30),
+            memory_size=512,
+            environment={
+                &#34;METADATA_TABLE&#34;: metadata_table.table_name,
+                &#34;OUTPUT_BUCKET&#34;: optimized_bucket.bucket_name
+            }
+        )
+
+        # Grant permissions
+        original_bucket.grant_read(self.processor)
+        optimized_bucket.grant_write(self.processor)
+        metadata_table.grant_read_write_data(self.processor)
+
+       
+        rule = events.Rule(
+            self, &#34;S3ObjectCreatedRule&#34;,
+            event_pattern=events.EventPattern(
+                source=[&#34;aws.s3&#34;],
+                detail_type=[&#34;Object Created&#34;],
+                detail={
+                    &#34;bucket&#34;: {
+                        &#34;name&#34;: [original_bucket.bucket_name]
+                    }
+                }
+            )
+        )
+        rule.add_target(targets.LambdaFunction(self.processor))
+</code></pre><ul><li><code>BackendStack</code>: Deploys the application&rsquo;s Backend components.</li></ul><pre tabindex=0><code>from aws_cdk import (
+    Stack,
+    Duration,
+    aws_lambda as _lambda,
+    aws_s3 as s3,
+    aws_dynamodb as _dynamodb,
+)
+from constructs import Construct
+import os
+
+class BackendStack(Stack):
+    def __init__(
+        self, scope: Construct, construct_id: str,
+        original_bucket: s3.Bucket,
+        optimized_bucket: s3.Bucket,
+        metadata_table: _dynamodb.Table,
+        user_table: _dynamodb.Table,
+        **kwargs
+    ) -&gt; None:
+        super().__init__(scope, construct_id, **kwargs)
+
+        # Deploy Spring Boot as a Lambda function using AWS Lambda Web Adapter
+        # Đọc file .env để lấy Secret (trong thực tế CI/CD nên dùng AWS Secrets Manager)
+        env_file_path = os.path.join(&#34;backend&#34;, &#34;image-optimizer&#34;, &#34;.env&#34;)
+        google_client_id = &#34;default_client_id&#34;
+        jwt_secret = &#34;default_jwt_secret_must_be_at_least_32_characters_long_for_hmac_sha256&#34;
+        
+        if os.path.exists(env_file_path):
+            with open(env_file_path, &#34;r&#34;) as f:
+                for line in f:
+                    if line.startswith(&#34;GOOGLE_CLIENT_ID=&#34;):
+                        google_client_id = line.strip().split(&#34;=&#34;, 1)[1]
+                    elif line.startswith(&#34;JWT_SECRET=&#34;):
+                        jwt_secret = line.strip().split(&#34;=&#34;, 1)[1]
+
+        self.spring_boot_lambda = _lambda.DockerImageFunction(
+            self,
+            &#34;SpringBootApiLambda&#34;,
+            code=_lambda.DockerImageCode.from_image_asset(
+                directory=&#34;backend/image-optimizer&#34;
+            ),
+            memory_size=512,  # Set to 512 to satisfy AWS Lab constraints
+            timeout=Duration.seconds(30), # API Gateway has 29s timeout anyway
+            environment={
+                &#34;S3_INPUT_BUCKET&#34;: original_bucket.bucket_name,
+                &#34;S3_OUTPUT_BUCKET&#34;: optimized_bucket.bucket_name,
+                &#34;DYNAMODB_IMAGE_TABLE&#34;: metadata_table.table_name,
+                &#34;DYNAMODB_USER_TABLE&#34;: user_table.table_name,
+                &#34;GOOGLE_CLIENT_ID&#34;: google_client_id,
+                &#34;JWT_SECRET&#34;: jwt_secret
+            }
+        )
+
+        # Grant necessary permissions
+        original_bucket.grant_read_write(self.spring_boot_lambda)
+        optimized_bucket.grant_read_write(self.spring_boot_lambda)
+        metadata_table.grant_read_write_data(self.spring_boot_lambda)
+        user_table.grant_read_write_data(self.spring_boot_lambda)
+</code></pre><ul><li><code>ApiStack</code>: Deploys API Gateway and configures the connection to the Backend.</li></ul><pre tabindex=0><code>from aws_cdk import (
+    Stack,
+    Duration,
+    CfnOutput,
+    aws_lambda as _lambda,
+    aws_apigateway as apigw,
+    aws_s3 as s3,
+    aws_dynamodb as _dynamodb,
+)
+from constructs import Construct
+
+class ApiStack(Stack):
+    def __init__(
+        self, scope: Construct, construct_id: str, 
+        original_bucket: s3.Bucket, 
+        metadata_table: _dynamodb.Table,
+        backend_lambda: _lambda.Function,
+        **kwargs
+    ) -&gt; None:
+        super().__init__(scope, construct_id, **kwargs)
+
+        # Upload Lambda for generating pre-signed URLs
+        self.upload_api_lambda = _lambda.Function(
+            self,
+            &#34;UploadApiLambda&#34;,
+            runtime=_lambda.Runtime.PYTHON_3_13,
+            handler=&#34;api_handler.lambda_handler&#34;,
+            code=_lambda.Code.from_asset(&#34;lambda&#34;),
+            timeout=Duration.seconds(10),
+            memory_size=256,
+            environment={
+                &#34;ORIGINAL_BUCKET&#34;: original_bucket.bucket_name,
+                &#34;METADATA_TABLE&#34;: metadata_table.table_name
+            }
+        )
+
+        # Grant permissions
+        original_bucket.grant_put(self.upload_api_lambda)
+        metadata_table.grant_read_write_data(self.upload_api_lambda)
+
+        # API Gateway REST API
+        self.api = apigw.RestApi(
+            self, &#34;ImageUploadApi&#34;,
+            rest_api_name=&#34;Image Upload Service&#34;,
+            description=&#34;This service handles uploading images to S3.&#34;
+        )
+
+        # Integration
+        upload_integration = apigw.LambdaIntegration(
+        self.upload_api_lambda
+        )
+
+        # Resource and Method for Upload Lambda (Python)
+        upload_resource = self.api.root.add_resource(&#34;upload&#34;)
+        upload_resource.add_method(&#34;POST&#34;, upload_integration)
+        upload_resource.add_method(&#34;OPTIONS&#34;, upload_integration)
+
+        # Integration for Spring Boot Lambda (Java)
+        spring_boot_integration = apigw.LambdaIntegration(backend_lambda)
+        
+        # Resource and Method for Spring Boot APIs: /api/{proxy+}
+        api_resource = self.api.root.add_resource(&#34;api&#34;)
+        api_resource.add_proxy(
+            default_integration=spring_boot_integration,
+            any_method=True
+        )
+
+        # Export API Gateway URL so sync_backend_env.py can read it from cdk-outputs.json
+        CfnOutput(
+            self,
+            &#34;ApiGatewayUrl&#34;,
+            value=self.api.url,
+            description=&#34;API Gateway endpoint URL (e.g. https://xxx.execute-api.region.amazonaws.com/prod/)&#34;
+        )
+</code></pre><ul><li><code>AmplifyHostingStack</code>: Configures resources for hosting the Frontend application on AWS Amplify.</li></ul><pre tabindex=0><code>from aws_cdk import (
+    Stack,
+    CfnOutput,
+    aws_amplify as amplify,
+)
+from constructs import Construct
+
+
+class AmplifyHostingStack(Stack):
+    def __init__(
+        self,
+        scope: Construct,
+        construct_id: str,
+        api_url: str,
+        **kwargs
+    ) -&gt; None:
+        super().__init__(scope, construct_id, **kwargs)
+
+        app = amplify.CfnApp(
+            self,
+            &#34;FrontendAmplifyApp&#34;,
+            name=&#34;image-optimization-frontend&#34;,
+            platform=&#34;WEB&#34;,
+            enable_branch_auto_deletion=False,
+            environment_variables=[
+                amplify.CfnApp.EnvironmentVariableProperty(
+                    name=&#34;VITE_API_GATEWAY_URL&#34;,
+                    value=api_url.rstrip(&#34;/&#34;)
+                ),
+                amplify.CfnApp.EnvironmentVariableProperty(
+                    name=&#34;VITE_GOOGLE_CLIENT_ID&#34;,
+                    value=&#34;{{resolve:secretsmanager:amplify/google-client-id:SecretString}}&#34;
+                ),
+            ],
+            build_spec=&#34;&#34;&#34;version: 1
+applications:
+  - appRoot: frontend/image-optimization-system/image-optimization-frontend
+    frontend:
+      phases:
+        preBuild:
+          commands:
+            - npm ci
+        build:
+          commands:
+            - npm run build
+      artifacts:
+        baseDirectory: dist
+        files:
+          - &#39;**/*&#39;
+      cache:
+        paths:
+          - node_modules/**/*
+&#34;&#34;&#34;,
+            custom_rules=[
+                amplify.CfnApp.CustomRuleProperty(
+                    source=&#34;&lt;/^[^.]+$|\\.(?!(css|gif|ico|jpg|jpeg|js|png|svg|txt|webp|woff|woff2)$)([^.]+$)/&gt;&#34;,
+                    target=&#34;/index.html&#34;,
+                    status=&#34;200&#34;,
+                )
+            ],
+        )
+
+        branch = amplify.CfnBranch(
+            self,
+            &#34;MainBranch&#34;,
+            app_id=app.attr_app_id,
+            branch_name=&#34;main&#34;,
+            stage=&#34;PRODUCTION&#34;,
+            enable_auto_build=False,
+        )
+
+        CfnOutput(
+            self,
+            &#34;AmplifyAppId&#34;,
+            value=app.attr_app_id,
+            description=&#34;Amplify app ID for the frontend&#34;,
+        )
+
+        CfnOutput(
+            self,
+            &#34;FrontendUrl&#34;,
+            value=f&#34;https://{branch.branch_name}.{app.attr_default_domain}&#34;,
+            description=&#34;Amplify HTTPS URL for the frontend&#34;,
+        )
+</code></pre><p>These Stacks are deployed through AWS CDK, which enables automatic creation and configuration of AWS resources instead of manually performing these tasks through the AWS Management Console.</p><hr><h3 id=step-1-clone-source-code-and-create-virtual-environment>Step 1: Clone Source Code and Create Virtual Environment</h3><p>Clone the project source code from the repository:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>git clone https://github.com/MyPhungg/aws-automatic-image-optimization-system.git
+</span></span></code></pre></div><p>After successfully cloning the repository, navigate to the project directory:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>cd aws-automatic-image-optimization-system
+</span></span></code></pre></div><p>Create a Python Virtual Environment:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>python -m venv .venv
+</span></span></code></pre></div><p>Activate the Virtual Environment.</p><p>On <strong>Windows</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>.venv<span style=color:#ae81ff>\S</span>cripts<span style=color:#ae81ff>\a</span>ctivate
+</span></span></code></pre></div><p>On <strong>Linux/macOS</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>source .venv/bin/activate
+</span></span></code></pre></div><p>After activating the virtual environment, install the required dependencies:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>pip install -r requirements.txt
+</span></span></code></pre></div><p>These libraries include the required dependencies for AWS CDK and other related components of the project.</p><hr><h3 id=step-2-configure-environment-variables>Step 2: Configure Environment Variables</h3><p>Some configuration values are required during the Backend deployment process. Create a <code>.env</code> file at:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>backend/image-optimizer/.env
+</span></span></code></pre></div><p>Sample content:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-env data-lang=env><span style=display:flex><span>GOOGLE_CLIENT_ID<span style=color:#f92672>=</span>your-google-oauth-client-id
+</span></span><span style=display:flex><span>JWT_SECRET<span style=color:#f92672>=</span>your-secret-key-at-least-32-chars-long
+</span></span></code></pre></div><p>Where:</p><ul><li><code>GOOGLE_CLIENT_ID</code>: Google OAuth Client ID used for Google login functionality.</li><li><code>JWT_SECRET</code>: Secret key used for JWT creation and authentication.</li></ul><p>Replace the sample values with the actual configuration values of the system.</p><blockquote><p><strong>Note:</strong> The <code>.env</code> file may contain sensitive information. Do not commit this file to GitHub or share actual secret values.</p></blockquote><hr><h3 id=step-3-bootstrap-aws-cdk>Step 3: Bootstrap AWS CDK</h3><p>Before deployment, AWS CDK needs to be <strong>bootstrapped</strong> on the AWS account and region being used.</p><p>If the AWS account has not been bootstrapped, execute:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>cdk bootstrap aws://&lt;ACCOUNT_ID&gt;/&lt;REGION&gt;
+</span></span></code></pre></div><p>Where:</p><ul><li><code>&lt;ACCOUNT_ID></code> is the AWS Account ID.</li><li><code>&lt;REGION></code> is the AWS Region used for deployment.</li></ul><p>Example:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>cdk bootstrap aws://123456789012/ap-southeast-1
+</span></span></code></pre></div><p>The bootstrap process creates the required resources that allow AWS CDK to deploy applications into the AWS environment.</p><blockquote><p><strong>Note:</strong> Normally, each AWS account and region only needs to be bootstrapped once. If the environment has already been bootstrapped, proceed to the deployment step.</p></blockquote><hr><h3 id=step-4-deploy-backend-infrastructure>Step 4: Deploy Backend Infrastructure</h3><p>After completing the bootstrap process, deploy all CDK Stacks using the following command:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span>cdk deploy --all --require-approval never --outputs-file cdk-outputs.json
+</span></span></code></pre></div><p>Where:</p><ul><li><code>--all</code>: Deploys all CDK Stacks in the project.</li><li><code>--require-approval never</code>: Skips manual approval for changes that normally require confirmation during deployment.</li><li><code>--outputs-file cdk-outputs.json</code>: Stores Stack output values in the <code>cdk-outputs.json</code> file.</li></ul><p>AWS CDK reads the configuration from the source code, identifies the required resources, and creates or updates them in the AWS environment.</p><p>After the deployment process is completed, the <code>cdk-outputs.json</code> file contains output information generated from the Stacks. These values can be used in the Frontend deployment process and system verification steps.</p><hr><h3 id=step-5-build-docker-image-for-backend>Step 5: Build Docker Image for Backend</h3><p>During the deployment process, some Backend Lambda functions are packaged as <strong>Docker Images</strong> through the <code>DockerImageFunction</code> configuration.</p><p>AWS CDK uses Docker on the local machine to build the corresponding images.</p><p>The general workflow is:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-text data-lang=text><span style=display:flex><span>AWS CDK
+</span></span><span style=display:flex><span>   │
+</span></span><span style=display:flex><span>   ▼
+</span></span><span style=display:flex><span>Docker Build
+</span></span><span style=display:flex><span>   │
+</span></span><span style=display:flex><span>   ▼
+</span></span><span style=display:flex><span>Docker Image
+</span></span><span style=display:flex><span>   │
+</span></span><span style=display:flex><span>   ▼
+</span></span><span style=display:flex><span>Amazon ECR
+</span></span><span style=display:flex><span>   │
+</span></span><span style=display:flex><span>   ▼
+</span></span><span style=display:flex><span>AWS Lambda
+</span></span></code></pre></div><p>Therefore, ensure that <strong>Docker Desktop is running</strong> before executing the <code>cdk deploy</code> command.</p><p>After the Docker image is successfully built, the image is pushed to <strong>Amazon ECR</strong> and used by Lambda during execution.</p><blockquote><p><strong>Note:</strong> The Docker image build process may take additional time depending on the source code size, dependencies, and computer performance.</p></blockquote><footer class=footline></footer></div></div><div id=navigation><a class="nav nav-prev" href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.7-cdk-deployment/5.7.2-prerequisite/ title="Prepare Deployment Environment"><i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=https://minhhau32223.github.io/fcaj_workshop/5-workshop/5.7-cdk-deployment/5.7.4-deploy-frontend/ title="Deploy Frontend to AWS Amplify" style=margin-right:0><i class="fa fa-chevron-right"></i></a></div></section><div style=left:-1e3px;overflow:scroll;position:absolute;top:-1e3px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=https://minhhau32223.github.io/fcaj_workshop/js/clipboard.min.js?1786697284></script><script src=https://minhhau32223.github.io/fcaj_workshop/js/perfect-scrollbar.min.js?1786697284></script><script src=https://minhhau32223.github.io/fcaj_workshop/js/perfect-scrollbar.jquery.min.js?1786697284></script><script src=https://minhhau32223.github.io/fcaj_workshop/js/jquery.sticky.js?1786697284></script><script src=https://minhhau32223.github.io/fcaj_workshop/js/featherlight.min.js?1786697284></script><script src=https://minhhau32223.github.io/fcaj_workshop/js/highlight.pack.js?1786697284></script><script>hljs.initHighlightingOnLoad()</script><script src=https://minhhau32223.github.io/fcaj_workshop/js/modernizr.custom-3.6.0.js?1786697284></script><script src=https://minhhau32223.github.io/fcaj_workshop/js/learn.js?1786697284></script><script src=https://minhhau32223.github.io/fcaj_workshop/js/hugo-learn.js?1786697284></script><link href=https://minhhau32223.github.io/fcaj_workshop/mermaid/mermaid.css?1786697284 rel=stylesheet><script src=https://minhhau32223.github.io/fcaj_workshop/mermaid/mermaid.js?1786697284></script><script>mermaid.initialize({startOnLoad:!0})</script><script>(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,(e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date),(i=t.createElement(n),a=t.getElementsByTagName(n)[0]),i.async=1,i.src=s,a.parentNode.insertBefore(i,a)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-158079754-2","auto"),ga("send","pageview")</script></body></html>
